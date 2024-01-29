@@ -13,6 +13,5 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 
 
 # docker build -t basic-app .
-
 # docker run -p 8000:80 basic-app
 
