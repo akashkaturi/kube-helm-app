@@ -1,0 +1,5 @@
+---
+releases:
+  - name: basic-app
+    chart: ./basic-app
+    installed: true
