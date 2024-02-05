@@ -1,15 +1,26 @@
 #
-FROM python:3.9
+FROM python:3.11
 
 WORKDIR /code
 
-COPY ./requirements.txt /code/requirements.txt
+COPY ./pyproject.toml ./poetry.lock ./
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install poetry && \
+    poetry config virtualenvs.create false && \
+    poetry install --no-dev
 
 COPY ./app /code/app
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+WORKDIR /code/app
+
+# Specify the command to run on container start
+CMD ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+
+
+# if requirements.txt is used.
+
+#COPY ./requirements.txt /code/requirements.txt
+#RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 
 # docker build -t basic-app .

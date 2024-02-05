@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: akashkaturi/basic-app:0.0.1
+  repository: akashkaturi/basic-app:0.0.2
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -106,6 +106,6 @@ tolerations: []
 
 affinity: {}
 
-env:
-  - name: "USERNAME"
-    value: "Akash"
+environment_variables:
+  - name: DATABASE_URL
+    value: postgres://user:password@host:port/database
