@@ -1,12 +1,12 @@
 #
-FROM python:3.11
+FROM python:3.9
 
 WORKDIR /code
 
 COPY ./pyproject.toml ./poetry.lock ./
 
 RUN pip install poetry && \
-    poetry config virtualenvs.create false && \
+    poetry config virtualenvs.create true && \
     poetry install --no-dev
 
 COPY ./app /code/app
