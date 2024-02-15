@@ -50,8 +50,7 @@ data_list = [
     {"name": "Alice", "age": 30},
     {"name": "Bob", "age": 35}
 ]
-for item in data_list:
-    if d
+
 # Apply the Person model to each dictionary in the list
 person_objects = [Person(**data) for data in data_list]
 
