@@ -109,3 +109,6 @@ affinity: {}
 environment_variables:
   - name: DATABASE_URL
     value: postgres://user:password@host:port/database
+
+author:
+  name: akashkaturi

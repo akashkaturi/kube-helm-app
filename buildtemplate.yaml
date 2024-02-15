@@ -1,0 +1,38 @@
+# build and push a docker image to dev, tst, or prd artifactory locations
+parameters:
+- name: 'artifactname'
+  type: string
+- name: 'arguments'
+  default: ""
+  type: string
+- name: 'dockerfile'
+  default: 'Dockerfile'
+  type: string
+- name: 'tag'
+  default: '$(Build.BuildNumber)'
+  type: string
+- name: 'env'
+  default: 'dev'
+  values:
+  - 'dev'
+  - 'tst'
+  - 'prd'
+  type: string
+
+steps :
+  - task: Docker@2
+    displayName: Build Image
+    inputs:
+      command: build
+      containerRegistry: $(containerRegistry)
+      dockerFile: ${{ parameters.dockerfile }}
+      arguments: ${{ parameters.arguments }}
+      repository: 'bds-docker-$ff parameters.env 3}/${{ parameters antifactname 1}'
+      tags: '${{ parameters.tag }}'
+  - task: Docker@2
+    displayName: Push Image to Container Registry
+    inputs:
+    command: push
+    containerRegistry: $(containerRegistry)
+    repository: 'bds-docker-${{ parameters.env }}/${{ parameters.artifactname }}'
+    tags: '${{ parameters.tag }}'

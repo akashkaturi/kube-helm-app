@@ -6,9 +6,11 @@ authors = ["Akash Katuri <akashkaturi77@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 fastapi = "^0.109.2"
 uvicorn = "0.27.0"
+black = "^24.1.1"
+pipx = "^1.4.3"
 
 
 [build-system]
