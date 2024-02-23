@@ -15,7 +15,7 @@ spec:
     metadata:
       {{- with .Values.podAnnotations }}
       annotations:
-        {{- toYaml . | nindent 8 }}
+        argocd-image-updater.argoproj.io/image-list: {{ .Values.image.repository }}:~0.1
       {{- end }}
       labels:
         {{- include "basic-app.labels" . | nindent 8 }}
