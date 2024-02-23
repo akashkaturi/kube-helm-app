@@ -4,7 +4,7 @@ metadata:
   name: {{ include "basic-app.fullname" . }}
   labels:
     {{- include "basic-app.labels" . | nindent 4 }}
-    
+
   argocd-image-updater.argoproj.io/image-list: basic-app=basic-app
   argocd-image-updater.argoproj.io/basic-app.update-strategy: ^0.0
 spec:
