@@ -10,8 +10,6 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
-argocd-image-updater.argoproj.io/image-list: basic-app=basic-app
-argocd-image-updater.argoproj.io/basic-app.update-strategy: ^0.0
 
 imagePullSecrets: []
 nameOverride: ""
