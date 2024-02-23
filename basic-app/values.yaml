@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: akashkaturi/basic-app
+  repository: akashkaturi/basic-app:0.0.2
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.0.2"
+  tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
