@@ -4,6 +4,10 @@ metadata:
   name: {{ include "basic-app.fullname" . }}
   labels:
     {{- include "basic-app.labels" . | nindent 4 }}
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: basic-app=basic-app
+    argocd-image-updater.argoproj.io/basic-app.update-strategy: ^0.0
+
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -15,8 +19,7 @@ spec:
     metadata:
       {{- with .Values.podAnnotations }}
       annotations:
-        argocd-image-updater.argoproj.io/image-list: basic-app=basic-app
-        argocd-image-updater.argoproj.io/basic-app.update-strategy: ^0.0
+        {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
         {{- include "basic-app.labels" . | nindent 8 }}
